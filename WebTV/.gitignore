@@ -1,0 +1,16 @@
+# Visual Studio for Mac
+.vscode/
+.vs/
+
+# Windows image file caches
+Thumbs.db
+ehthumbs.db
+
+# Windows Installer files
+*.cab
+*.msi
+*.msm
+*.msp
+
+# Windows Installer files
+.vs2019/

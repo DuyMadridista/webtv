@@ -1,0 +1,6 @@
+@WebTV_HostAddress = http://localhost:5001
+
+GET {{WebTV_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
