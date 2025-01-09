@@ -84,6 +84,7 @@ jobs:
               sudo systemctl start docker
               sudo systemctl enable docker
               sudo usermod -aG docker ec2-user
+              newgrp docker
             fi
 
             # Đặt AWS credentials từ GitHub Secrets
@@ -92,15 +93,15 @@ jobs:
             export AWS_DEFAULT_REGION="ap-southeast-2"
 
             # Đăng nhập vào ECR
-            aws ecr get-login-password --region ap-southeast-2 | docker login --username AWS --password-stdin ${{ secrets.AWS_ACCOUNT_ID }}.dkr.ecr.ap-southeast-2.amazonaws.com
+            sudo docker login --username AWS --password-stdin ${{ secrets.AWS_ACCOUNT_ID }}.dkr.ecr.ap-southeast-2.amazonaws.com
 
             # Tải image mới nhất từ ECR
-            docker pull ${{ secrets.AWS_ACCOUNT_ID }}.dkr.ecr.ap-southeast-2.amazonaws.com/webtv:latest
+            sudo docker pull ${{ secrets.AWS_ACCOUNT_ID }}.dkr.ecr.ap-southeast-2.amazonaws.com/webtv:latest
 
             # Dừng và xóa container cũ nếu tồn tại
-            docker stop webtv || true
-            docker rm webtv || true
+            sudo docker stop webtv || true
+            sudo docker rm webtv || true
 
             # Chạy container mới
-            docker run -d --name webtv -p 5001:5001 \
+            sudo docker run -d --name webtv -p 5001:5001 \
               ${{ secrets.AWS_ACCOUNT_ID }}.dkr.ecr.ap-southeast-2.amazonaws.com/webtv:latest
