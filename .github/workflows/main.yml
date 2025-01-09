@@ -93,7 +93,7 @@ jobs:
             export AWS_DEFAULT_REGION="ap-southeast-2"
 
             # Đăng nhập vào ECR
-            sudo docker login --username AWS --password-stdin ${{ secrets.AWS_ACCOUNT_ID }}.dkr.ecr.ap-southeast-2.amazonaws.com
+            aws ecr get-login-password --region ap-southeast-2 | sudo docker login --username AWS --password-stdin ${{ secrets.AWS_ACCOUNT_ID }}.dkr.ecr.ap-southeast-2.amazonaws.com
 
             # Tải image mới nhất từ ECR
             sudo docker pull ${{ secrets.AWS_ACCOUNT_ID }}.dkr.ecr.ap-southeast-2.amazonaws.com/webtv:latest
