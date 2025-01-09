@@ -31,7 +31,7 @@ jobs:
         run: dotnet publish WebTV/WebTV.csproj --configuration Release --output ./publish
 
       - name: Build Docker image
-        run: docker build -t webtv ./publish
+        run: docker build -t webtv .
 
       - name: Configure AWS credentials
         uses: aws-actions/configure-aws-credentials@v1
