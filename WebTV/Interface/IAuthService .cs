@@ -4,5 +4,6 @@
     {
         Task<string> Authenticate(string username, string password);
         Task<string> AuthenticateWithFacebook(string accessToken);
+        Task<string> AuthenticateWithGoogle(string idToken);
     }
 }

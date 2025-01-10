@@ -87,6 +87,20 @@ namespace WebTV.Controllers
                 return BadRequest(new { message = "Failed to authenticate with Facebook", error = ex.Message });
             }
         }
+        [Route("google-login")]
+        [HttpPost]
+        public async Task<IActionResult> GoogleLogin([FromBody] GoogleLoginRequest model)
+        {
+            try
+            {
+                var token = await _authService.AuthenticateWithGoogle(model.IdToken);
+                return Ok(new { token });
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(new { message = "Failed to authenticate with Google", error = ex.Message });
+            }
+        }
     }
     public class RegisterRequest
     {
@@ -98,6 +112,10 @@ namespace WebTV.Controllers
     public class FacebookLoginRequest
     {
         public string AccessToken { get; set; }
+    }
+    public class GoogleLoginRequest
+    {
+        public string IdToken { get; set; }
     }
     public class FacebookUserResponse
     {

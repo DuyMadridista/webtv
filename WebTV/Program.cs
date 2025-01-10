@@ -9,6 +9,7 @@ using WebTV.Data;
 using WebTV.Interface;
 using WebTV.Services;
 
+
 namespace WebTV
 {
     public class Program
@@ -31,7 +32,6 @@ namespace WebTV
             builder.Services.AddScoped<AuthService>();
             builder.Services.AddScoped<IAuthService, AuthService>();
             builder.Services.AddHttpClient<IFacebookAuthService, FacebookAuthService>();
-
             builder.Services.AddEndpointsApiExplorer();
             builder.Services.AddSwaggerGen(options =>
             {
@@ -92,6 +92,11 @@ namespace WebTV
                 {
                     facebookOptions.AppId = builder.Configuration["Authentication:Facebook:AppId"];
                     facebookOptions.AppSecret = builder.Configuration["Authentication:Facebook:AppSecret"];
+                })
+                .AddGoogle(googleOptions =>
+                {
+                    googleOptions.ClientId = builder.Configuration["Authentication:Google:ClientId"];
+                    googleOptions.ClientSecret = builder.Configuration["Authentication:Google:ClientSecret"];
                 });
 
 

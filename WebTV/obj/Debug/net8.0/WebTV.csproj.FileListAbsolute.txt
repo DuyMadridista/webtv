@@ -166,3 +166,9 @@ D:\WebTV\WebTV\bin\Debug\net8.0\zh-Hant\Microsoft.CodeAnalysis.Workspaces.MSBuil
 D:\WebTV\WebTV\bin\Debug\net8.0\BCrypt.Net-Next.dll
 D:\WebTV\WebTV\bin\Debug\net8.0\Microsoft.AspNetCore.Authentication.Facebook.dll
 D:\WebTV\WebTV\obj\Debug\net8.0\WebTV.sourcelink.json
+D:\WebTV\WebTV\bin\Debug\net8.0\Google.Apis.dll
+D:\WebTV\WebTV\bin\Debug\net8.0\Google.Apis.Auth.dll
+D:\WebTV\WebTV\bin\Debug\net8.0\Google.Apis.Core.dll
+D:\WebTV\WebTV\bin\Debug\net8.0\Microsoft.AspNetCore.Authentication.Google.dll
+D:\WebTV\WebTV\bin\Debug\net8.0\System.Management.dll
+D:\WebTV\WebTV\bin\Debug\net8.0\runtimes\win\lib\net7.0\System.Management.dll

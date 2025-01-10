@@ -1,4 +1,5 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using Google.Apis.Auth;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.IdentityModel.Tokens;
 using System.IdentityModel.Tokens.Jwt;
 using System.Security.Claims;
@@ -53,6 +54,42 @@ namespace WebTV.Services
                 throw new UnauthorizedAccessException("Invalid credentials.");
             }
             return GenerateJwtToken(user);
+        }
+
+        public async Task<string> AuthenticateWithGoogle(string idToken)
+        {
+            try
+            {
+                GoogleJsonWebSignature.ValidationSettings settings = new GoogleJsonWebSignature.ValidationSettings
+                {
+                    Audience = new[] { _configuration["Authentication:Google:ClientId"] }
+                };
+
+                GoogleJsonWebSignature.Payload payload = await GoogleJsonWebSignature.ValidateAsync(idToken, settings);
+                var existingUser = await _context.Users.FirstOrDefaultAsync(u => u.Email == payload.Email);
+
+                if (existingUser == null)
+                {
+                    // Tạo user mới nếu chưa tồn tại
+                    var newUser = new User
+                    {
+                        Id = Guid.NewGuid().ToString(),
+                        Email = payload.Email,
+                        Name = payload.Name,
+                        Role = "User" // Set role mặc định
+                    };
+
+                    _context.Users.Add(newUser);
+                    await _context.SaveChangesAsync();
+                    existingUser = newUser;
+                }
+
+                return GenerateJwtToken(existingUser);
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("Failed to authenticate with Google", ex);
+            }
         }
         private string GenerateJwtToken(User user)
         {
