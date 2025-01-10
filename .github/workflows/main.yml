@@ -103,5 +103,5 @@ jobs:
             sudo docker rm webtv || true
 
             # Chạy container mới
-            sudo docker run -d --name webtv -p 5001:5001 \
+            sudo docker run -d --name webtv -p 5001:8080 \
               ${{ secrets.AWS_ACCOUNT_ID }}.dkr.ecr.ap-southeast-2.amazonaws.com/webtv:latest

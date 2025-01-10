@@ -15,7 +15,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("WebTV")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+f777b5903b27da6ee29bbd0b318ee7e6d625a068")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+8113b02916a04929ea0681fc4c05b49bbca57ca5")]
 [assembly: System.Reflection.AssemblyProductAttribute("WebTV")]
 [assembly: System.Reflection.AssemblyTitleAttribute("WebTV")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

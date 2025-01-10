@@ -16,6 +16,10 @@ namespace WebTV
         public static void Main(string[] args)
         {
             var builder = WebApplication.CreateBuilder(args);
+            //builder.WebHost.ConfigureKestrel(options =>
+            //{
+            //    options.ListenAnyIP(8080);
+            //});
             builder.Services.AddDbContext<ApplicationDbContext>(options =>
                 options.UseCosmos(
                     builder.Configuration["ConnectionStrings:CosmosDb"],
@@ -100,15 +104,13 @@ namespace WebTV
             var app = builder.Build();
 
             // Configure the HTTP request pipeline.
-            if (app.Environment.IsDevelopment())
-            {
+
                 app.UseSwagger();
                 app.UseSwaggerUI(c =>
                 {
                     c.SwaggerEndpoint("/swagger/v1/swagger.json", "API v1");
-                    c.RoutePrefix = string.Empty; // This will make Swagger available at the root URL (http://localhost:5000)
+                    c.RoutePrefix = string.Empty; 
                 });
-            }
             app.UseCors("AllowAllOrigins");
             app.UseAuthentication();
             app.UseAuthorization();
@@ -118,7 +120,7 @@ namespace WebTV
             using (var scope = app.Services.CreateScope())
             {
                 var dbContext = scope.ServiceProvider.GetRequiredService<ApplicationDbContext>();
-                dbContext.Database.EnsureCreated(); // Ensure that the database is created
+                dbContext.Database.EnsureCreated(); 
             }
 
             app.Run();

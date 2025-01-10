@@ -165,3 +165,4 @@ D:\WebTV\WebTV\bin\Debug\net8.0\zh-Hans\Microsoft.CodeAnalysis.Workspaces.MSBuil
 D:\WebTV\WebTV\bin\Debug\net8.0\zh-Hant\Microsoft.CodeAnalysis.Workspaces.MSBuild.BuildHost.resources.dll
 D:\WebTV\WebTV\bin\Debug\net8.0\BCrypt.Net-Next.dll
 D:\WebTV\WebTV\bin\Debug\net8.0\Microsoft.AspNetCore.Authentication.Facebook.dll
+D:\WebTV\WebTV\obj\Debug\net8.0\WebTV.sourcelink.json
